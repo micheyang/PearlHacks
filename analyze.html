@@ -29,9 +29,9 @@
 
         // Request parameters.
         var params = {
-            "visualFeatures": "Description,Color",
-            "details": "",
-            "language": "en",
+            "visualFeatures": "Description",
+            // "details": "",
+            // "language": "en",
         };
 
         // Display the image.
@@ -57,6 +57,24 @@
         .done(function(data) {
             // Show formatted JSON on webpage.
             $("#responseTextArea").val(JSON.stringify(data, null, 2));
+            // var data = {a: 1, b: 3};
+            var fruits = ["orange", "apple", "bowl"];
+            var data = JSON.stringify(data, null, 2);
+            // for (var key in data) {
+            //   if (data.hasOwnProperty(key)) {
+            //     var val = data[key];
+            //     $("#responseTextArea2").val(val);
+            //     // console.log(val);
+            //   }
+            // }
+            for (var i = 0; i < fruits.length; i++) {
+              if (data.includes(fruits[i])) {
+                $("#responseTextArea2").val(fruits[i]);
+                break;
+              }
+
+          }
+            // $("#responseTextArea2").val(data.substring(5,9));
         })
 
         // var arrayLength = data[0].length;
@@ -64,14 +82,14 @@
           //     alert(data[0][i]);
           //     $("#responseTextArea2").val(i);
           // }
-          var data = {a: 1, b: 2};
-            for (var key in data) {
-              if (data.hasOwnProperty(key)) {
-                var val = data[key];
-                $("#responseTextArea2").val(val);
-                // console.log(val);
-              }
-            }
+          // var data = {a: 1, b: 2};
+          //   for (var key in data) {
+          //     if (data.hasOwnProperty(key)) {
+          //       var val = data[key];
+          //       $("#responseTextArea2").val(val);
+          //       // console.log(val);
+          //     }
+          //   }
 
         .fail(function(jqXHR, textStatus, errorThrown) {
             // Display error message.
