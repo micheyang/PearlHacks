@@ -28,12 +28,20 @@ p {
   padding-left: 10px;
 }
 
+/* #about {
+  color: #ffffff;
+} */
+
 /* img {
   border-radius: 50%;
 } */
 
 #homepageFruit {
   border-radius: 50%;
+}
+
+#homepageLinks {
+  text-align: center;
 }
 
 h2 {
@@ -63,9 +71,15 @@ h2 {
 }
 
 a:link, a:visited {
-    color: #38488f;
+    color: #ffffff;
     text-decoration: none;
 }
+
+a:hover {
+    color: #ff9933;
+    text-decoration: none;
+}
+
 @media (max-width: 700px) {
     body {
         background-color: #fff;
