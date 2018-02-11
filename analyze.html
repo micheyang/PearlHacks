@@ -58,18 +58,28 @@
             // Show formatted JSON on webpage.
             // $("#responseTextArea").val(JSON.stringify(data, null, 2));
             // var data = {a: 1, b: 3};
-            var fruits = ["orange", "apple", "banana","pineapple", "tomato"];
-            var fruit0 = ": Ripe oranges should be firm with a thin, smooth skin and no soft spots. The riper the orange, the heavier the orange should feel for its size."
+            var fruits = ["orange", "pineapple","apple", "banana", "tomato"];
+            var fruit0 = "Ripe oranges should be firm with a thin, smooth skin and no soft spots. The riper the orange, the heavier the orange should feel for its size.";
+            var fruit2 = "Pick up the apple and gently press a small area of the fruit’s skin. It should be firm to the touch. Avoid apples that are noticeably soft, discolored, or indent easily after you press the skin.It may have a pleasant aroma. This will vary by variety with some apples (like Gala) having a stronger fragrance than others.";
+            var fruit3 = "A yellow banana may look good to go, but it does not achieve its maximum potential until it has some brown spots on it. The brown spots indicate that the sugar content has risen in the ripening process. Depending on how soon you want to eat them, purchase bananas on a scale of green to yellow. The greener the bananas, the longer they will need to sit for them to ripen, and the yellower, the less time is needed.";
+            var fruit1 = "The butt of the pineapple is where it should be most fragrant, so put your nose there (not on the crown). Ifit smells sweet, like pineapple juice, it is ripe. If you smell nothing, that means there is insufficient sugar and the fruit will not be sweet (i.e., it has been harvested too early).";
+            var fruit4 = "The best way to tell if a tomato is ripe is a squeeze test. Unripe, green tomatoes feel hard, and they have no give when you squeeze them--like a golf ball. Ripe tomatoes are firm, but have a little bit of give when you squeeze";
+
             var data = JSON.stringify(data, null, 2);
-            var message = "";
 
             for (var i = 0; i < fruits.length; i++) {
               if (data.includes(fruits[i])) {
-                message += fruits[i];
                 $("#responseTextArea").val(fruits[i]);
-                if (i = 0) {
-                    message += fruit0;
-                    $("#responseTextArea2").val(message);
+                if (i == 0) {
+                    $("#responseTextArea2").val(fruit0);
+                } else if (i == 1) {
+                    $("#responseTextArea2").val(fruit1);
+                } else if (i == 2) {
+                    $("#responseTextArea2").val(fruit2);
+                } else if (i == 3) {
+                    $("#responseTextArea2").val(fruit3);
+                } else if (i == 1) {
+                    $("#responseTextArea2").val(fruit4);
                 }
                 break;
               }
@@ -102,7 +112,7 @@
   <img id="sourceImage" width="300" />
 <!-- <div id="wrapper" style="width:800px; display:table;">
   Your fruit is a
-   <!--  <div id="jsonOutput" style="width:600px;">
+   <!  <div id="jsonOutput" style="width:600px;">
         Response:
         <br><br>
         <textarea id="responseTextArea" class="UIInput" style="width:580px; height:400px;"></textarea>
@@ -110,7 +120,7 @@
     <div id="calcOutput" style="width:600px;">
         Is it ripe?:
         <br><br>
-        <textarea id="responseTextArea2" class="UIInput" style="width:580px; height:400px;"></textarea>
+        <textarea id="responseTextArea2" class="UIInput" style="width:580px; height:200px;"></textarea>
     </div>
     <!-- <div id="imageDiv" style="width:420px; display:table-cell;">
         Source image:
