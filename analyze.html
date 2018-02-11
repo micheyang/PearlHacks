@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+    <title>Analyze Sample</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+
+<script type="text/javascript">
+    function processImage() {
+        // **********************************************
+        // *** Update or verify the following values. ***
+        // **********************************************
+
+        // Replace the subscriptionKey string value with your valid subscription key.
+        var subscriptionKey = "e49ce168bc004f299fb2dd4cb5c73381";
+
+        // Replace or verify the region.
+        //
+        // You must use the same region in your REST API call as you used to obtain your subscription keys.
+        // For example, if you obtained your subscription keys from the westus region, replace
+        // "westcentralus" in the URI below with "westus".
+        //
+        // NOTE: Free trial subscription keys are generated in the westcentralus region, so if you are using
+        // a free trial subscription key, you should not need to change this region.
+        var uriBase = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/analyze";
+
+        // Request parameters.
+        var params = {
+            "visualFeatures": "Description,Color",
+            "details": "",
+            "language": "en",
+        };
+
+        // Display the image.
+        var sourceImageUrl = document.getElementById("inputImage").value;
+        document.querySelector("#sourceImage").src = sourceImageUrl;
+
+        // Perform the REST API call.
+        $.ajax({
+            url: uriBase + "?" + $.param(params),
+
+            // Request headers.
+            beforeSend: function(xhrObj){
+                xhrObj.setRequestHeader("Content-Type","application/json");
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+            },
+
+            type: "POST",
+
+            // Request body.
+            data: '{"url": ' + '"' + sourceImageUrl + '"}',
+        })
+
+        .done(function(data) {
+            // Show formatted JSON on webpage.
+            $("#responseTextArea").val(JSON.stringify(data, null, 2));
+        })
+
+        // var arrayLength = data[0].length;
+          // for (var i = 0; i < 5; i++) {
+          //     alert(data[0][i]);
+          //     $("#responseTextArea2").val(i);
+          // }
+          var data = {a: 1, b: 2};
+            for (var key in data) {
+              if (data.hasOwnProperty(key)) {
+                var val = data[key];
+                $("#responseTextArea2").val(val);
+                // console.log(val);
+              }
+            }
+
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            // Display error message.
+            var errorString = (errorThrown === "") ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
+            errorString += (jqXHR.responseText === "") ? "" : jQuery.parseJSON(jqXHR.responseText).message;
+            alert(errorString);
+        });
+    };
+</script>
+
+<a href="index.html"><h1>Ripe Hype?</h1></a>
+<p>Insert the image URL of a fruit picture below, and then click the button.
+</p>
+<p><input type="text" name="inputImage" id="inputImage" value="http://cdnll.halegroves.com/images/xl/1n-navel-oranges-for-sale-online_04.jpg" />
+<button onclick="processImage()">Ripe?</button>
+</p>
+<div>
+  Your fruit is a:<br><br>
+  <img id="sourceImage" width="300" />
+<!-- <div id="wrapper" style="width:800px; display:table;">
+  Your fruit is a -->
+    <div id="jsonOutput" style="width:600px;">
+        Response:
+        <br><br>
+        <textarea id="responseTextArea" class="UIInput" style="width:580px; height:400px;"></textarea>
+    </div><br><br>
+    <div id="calcOutput" style="width:600px;">
+        Response:
+        <br><br>
+        <textarea id="responseTextArea2" class="UIInput" style="width:580px; height:400px;"></textarea>
+    </div>
+    <!-- <div id="imageDiv" style="width:420px; display:table-cell;">
+        Source image:
+        <br><br>
+        <img id="sourceImage" width="400" />
+    </div> -->
+</div>
+</body>
+</html>
