@@ -78,7 +78,7 @@
                     $("#responseTextArea2").val(fruit2);
                 } else if (i == 3) {
                     $("#responseTextArea2").val(fruit3);
-                } else if (i == 1) {
+                } else if (i == 4) {
                     $("#responseTextArea2").val(fruit4);
                 }
                 break;
@@ -96,19 +96,27 @@
     };
 </script>
 
-<a href="index.html"><h1>Ripe Hype?</h1></a>
+<a href="index.html"><h1>Ripe Hype</h1></a>
 <p>Insert the image URL of a fruit picture below, and then click the button.
 </p>
-<p><input type="text" name="inputImage" id="inputImage" value="http://cdnll.halegroves.com/images/xl/1n-navel-oranges-for-sale-online_04.jpg" />
+<p><input type="text" name="inputImage" id="inputImage" value="" />
 <button onclick="processImage()">Ripe?</button>
 </p>
-<div>
+<p>Same image URLs:
+  <ul>
+    <li><strong>orange:</strong> http://jikomart.co.ke/site/wp-content/uploads/2017/09/local-oranges.jpg</li>
+    <li><strong>pineapple:</strong> http://jambeverageco.com/wp-content/uploads/2014/09/pineapples.jpg</li>
+    <li><strong>apple:</strong> http://www.toptenz.net/wp-content/uploads/2014/12/vegitarianfoods1.jpg</li>
+    <li><strong>banana:</strong> https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Bananas.jpg/220px-Bananas.jpg</li>
+    <li><strong>tomato:</strong> https://cdn-prod.countrysidenetwork.com/wp-content/uploads/growing-cherry-tomatoes-in-pots-e1459514209475.jpg</li>
+  </ul>
+<div id="wrapper" style="width:800px; display:table;">
   <!-- Your fruit is a:<br><br> -->
-   <div id="jsonOutput" style="width:600px;">
+
+   <div id="jsonOutput" style="width:600px; padding: 25px; display:table-cell;">
         Your fruit is a(n):
-        <br><br>
-        <textarea id="responseTextArea" class="UIInput" style="width:580px; height:50px;"></textarea>
-    </div><br><br>
+        <textarea id="responseTextArea" class="UIInput" style="width:100px; height:20px;"></textarea>
+    </div><br>
   <img id="sourceImage" width="300" />
 <!-- <div id="wrapper" style="width:800px; display:table;">
   Your fruit is a
@@ -117,10 +125,10 @@
         <br><br>
         <textarea id="responseTextArea" class="UIInput" style="width:580px; height:400px;"></textarea>
     </div><br><br> -->
-    <div id="calcOutput" style="width:600px;">
+    <div id="calcOutput" style="width:600px; padding: 25px; display:table-cell;">
         Is it ripe?:
-        <br><br>
-        <textarea id="responseTextArea2" class="UIInput" style="width:580px; height:200px;"></textarea>
+        <br>
+        <textarea id="responseTextArea2" class="UIInput" style="width:400px; height:200px;"></textarea>
     </div>
     <!-- <div id="imageDiv" style="width:420px; display:table-cell;">
         Source image:
